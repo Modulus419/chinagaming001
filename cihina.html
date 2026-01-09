@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CHINA BOY .FF | FREE FIRE LEGEND</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0d001a;
+      color: #e0e0ff;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(200,0,255,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255,80,0,0.06) 0%, transparent 60%);
+      background-attachment: fixed;
+    }
+
+    /* Animated background particles */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 100, 100, 0.6);
+      border-radius: 50%;
+      box-shadow: 0 0 15px #ff4444;
+      animation: float 25s infinite linear;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(100vh) scale(0.3); opacity: 0; }
+      10%  { opacity: 0.8; }
+      90%  { opacity: 0.9; }
+      100% { transform: translateY(-30vh) scale(0.8); opacity: 0; }
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 25px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(10, 0, 30, 0.6);
+      backdrop-filter: blur(10px);
+      transition: 0.4s;
+    }
+
+    header.scrolled {
+      background: rgba(20, 0, 50, 0.85);
+      padding: 15px 5%;
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #ff3366, #ff9933, #ffcc33);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 20px rgba(255, 100, 0, 0.7);
+    }
+
+    nav a {
+      color: #ffcc99;
+      text-decoration: none;
+      margin: 0 25px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: 0.4s;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background: #ff3366;
+      transition: width 0.4s;
+    }
+
+    nav a:hover::after { width: 100%; }
+    nav a:hover { color: white; text-shadow: 0 0 10px #ff3366; }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      z-index: 10;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 6.5rem;
+      line-height: 1;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #ff4d4d, #ff9933, #ffff66, #66ff99);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 40px rgba(255, 80, 0, 0.8);
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 20px #ff4444, 0 0 40px #ff8800; }
+      to   { text-shadow: 0 0 40px #ff4444, 0 0 80px #ff8800; }
+    }
+
+    .hero h2 {
+      font-size: 2.8rem;
+      color: #ffcc99;
+      margin: 20px 0 40px;
+      text-shadow: 0 0 15px rgba(255, 200, 100, 0.7);
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 18px 60px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(45deg, #ff3366, #ff9933);
+      border-radius: 50px;
+      box-shadow: 0 0 30px rgba(255, 80, 0, 0.6);
+      transition: all 0.4s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-8px) scale(1.08);
+      box-shadow: 0 0 60px rgba(255, 80, 0, 0.9);
+    }
+
+    .china-boy-showcase {
+      padding: 120px 8%;
+      text-align: center;
+      background: linear-gradient(to bottom, rgba(10,0,30,0.4), rgba(30,0,60,0.6));
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      height: 420px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+      transition: transform 0.5s, box-shadow 0.5s;
+    }
+
+    .card:hover {
+      transform: translateY(-20px);
+      box-shadow: 0 25px 60px rgba(255, 60, 0, 0.5);
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s;
+    }
+
+    .card:hover img {
+      transform: scale(1.12);
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 30px;
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    .card:hover .card-overlay { opacity: 1; }
+
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      background: rgba(10,0,30,0.8);
+      border-top: 1px solid #ff336644;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 4.8rem; }
+      .hero h2 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles" id="particles"></div>
+
+  <header id="header">
+    <div class="logo">CHINA BOY<span style="color:#ff9933">.FF</span></div>
+    <nav>
+      <a href="#home">HOME</a>
+      <a href="#gallery">GALLERY</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>CHINA BOY .FF</h1>
+      <h2>BOOM HEADSHOT KING • FREE FIRE LEGEND</h2>
+      <a href="https://youtube.com/@yourchannel" target="_blank" class="cta-btn">WATCH EPIC CLIPS →</a>
+    </div>
+  </section>
+
+  <section class="china-boy-showcase" id="gallery">
+    <h2 style="font-family: 'Orbitron', sans-serif; font-size: 4rem; margin-bottom: 40px; color: #ff9933; text-shadow: 0 0 25px #ff6600;">
+      CHINA BOY UNLEASHED
+    </h2>
+
+    <div class="gallery">
+      <!-- Add your best China Boy / Free Fire character screenshots here -->
+      <div class="card">
+        <img src="https://media.easy-peasy.ai/27feb2bb-aeb4-4a83-9fb6-8f3f2a15885e/a70aa24f-9175-4c03-b5e2-feb6be94c4f7.png" alt="Cyber Ninja China Boy">
+        <div class="card-overlay">
+          <h3 style="font-size: 2rem; color: #ffcc66;">Cyber Dragon Mode</h3>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=122273193200207083" alt="Epic Free Fire Action">
+        <div class="card-overlay">
+          <h3 style="font-size: 2rem; color: #ffcc66;">1v4 Clutch Master</h3>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=4281989558690458" alt="Energy Sword Duel">
+        <div class="card-overlay">
+          <h3 style="font-size: 2rem; color: #ffcc66;">Dragon Energy Blade</h3>
+        </div>
+      </div>
+
+      <!-- Add more cards as needed -->
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 CHINA BOY .FF • All Rights Reserved • Free Fire Content Creator</p>
+  </footer>
+
+  <script>
+    // Simple scroll effect for header
+    window.addEventListener('scroll', () => {
+      document.querySelector('header').classList.toggle('scrolled', window.scrollY > 100);
+    });
+
+    // Floating particles
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      const size = Math.random() * 8 + 4;
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+      document.getElementById('particles').appendChild(particle);
+
+      setTimeout(() => particle.remove(), 30000);
+    }
+
+    setInterval(createParticle, 800);
+  </script>
+</body>
+</html>
